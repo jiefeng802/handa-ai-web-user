@@ -23,5 +23,5 @@ export const ChatItem = ({
     );
   }
 
-  // return <ChatNotification content={content.body} />;
+  return <></>;
 };

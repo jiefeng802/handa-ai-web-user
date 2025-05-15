@@ -1,7 +1,6 @@
 /* eslint-disable max-lines */
 import { AxiosInstance } from "axios";
 
-import { BrainRoleType } from "@/app/studio/[brainId]/BrainManagementTabs/components/PeopleTab/BrainUsers/types";
 import {
   BackendMinimalBrainForUser,
   Brain,
@@ -13,15 +12,9 @@ import {
   CreateBrainInput,
   IntegrationBrains,
   ListFilesProps,
-  SubscriptionUpdatableProperties,
   UpdateBrainInput,
 } from "./types";
 import { mapBackendMinimalBrainToMinimalBrain } from "./utils/mapBackendMinimalBrainToMinimalBrain";
-import {
-  BackendSubscription,
-  mapSubscriptionToBackendSubscription,
-} from "./utils/mapSubscriptionToBackendSubscription";
-import { mapSubscriptionUpdatablePropertiesToBackendSubscriptionUpdatableProperties } from "./utils/mapSubscriptionUpdatablePropertiesToBackendSubscriptionUpdatableProperties";
 
 export const createBrain = async (
   brain: CreateBrainInput,
@@ -61,47 +54,6 @@ export const getBrains = async (
   ).data;
 
   return brains.map(mapBackendMinimalBrainToMinimalBrain);
-};
-
-export type Subscription = { email: string; role: BrainRoleType };
-
-export const addBrainSubscriptions = async (
-  brainId: string,
-  subscriptions: Subscription[],
-  axiosInstance: AxiosInstance
-): Promise<void> => {
-  await axiosInstance.post(
-    `/brains/${brainId}/subscription`,
-    subscriptions.map(mapSubscriptionToBackendSubscription)
-  );
-};
-
-export const getBrainUsers = async (
-  brainId: string,
-  axiosInstance: AxiosInstance
-): Promise<Subscription[]> => {
-  const brainsUsers = (
-    await axiosInstance.get<BackendSubscription[]>(`/brains/${brainId}/users`)
-  ).data;
-
-  return brainsUsers.map((brainUser) => ({
-    email: brainUser.email,
-    role: brainUser.rights,
-  }));
-};
-
-export const updateBrainAccess = async (
-  brainId: string,
-  userEmail: string,
-  subscription: SubscriptionUpdatableProperties,
-  axiosInstance: AxiosInstance
-): Promise<void> => {
-  await axiosInstance.put(`/brains/${brainId}/subscription`, {
-    ...mapSubscriptionUpdatablePropertiesToBackendSubscriptionUpdatableProperties(
-      subscription
-    ),
-    email: userEmail,
-  });
 };
 
 export const updateBrain = async (

@@ -1,6 +1,5 @@
 import { UUID } from "crypto";
 
-import { BrainRoleType } from "@/app/studio/[brainId]/BrainManagementTabs/components/PeopleTab/BrainUsers/types";
 import { BrainStatus, BrainType, Model } from "@/lib/types/BrainConfig";
 
 export type ApiBrainDefinitionSchemaPropertyType = "string" | "number";
@@ -17,10 +16,6 @@ export type AllowedRequestMethod = (typeof allowedRequestMethods)[number];
 export type ApiBrainDefinitionSchema = {
   properties: ApiBrainDefinitionSchemaProperty[];
   required: string[];
-};
-
-export type SubscriptionUpdatableProperties = {
-  role: BrainRoleType | null;
 };
 
 export type ListFilesProps = {

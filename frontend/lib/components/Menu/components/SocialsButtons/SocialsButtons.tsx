@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import { Icon } from "@/lib/components/ui/Icon/Icon";
 import { useUserSettingsContext } from "@/lib/context/UserSettingsProvider/hooks/useUserSettingsContext";
-import { QrcodeButton } from "../../components/Qrcode/QrcodeButton";
 
 import styles from "./SocialsButtons.module.scss";
 

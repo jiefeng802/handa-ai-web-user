@@ -1,23 +1,18 @@
 import { useAxios } from "@/lib/hooks";
 
 import {
-  addBrainSubscriptions,
   createBrain,
   deleteBrain,
   getBrain,
   getBrains,
-  getBrainUsers,
   getDocsFromQuestion,
   getIntegrationBrains,
   getPublicBrains,
-  Subscription,
   updateBrain,
-  updateBrainAccess,
   updateBrainSecrets,
 } from "./brain";
 import {
   CreateBrainInput,
-  SubscriptionUpdatableProperties,
   UpdateBrainInput,
 } from "./types";
 
@@ -31,17 +26,6 @@ export const useBrainApi = () => {
     deleteBrain: async (id: string) => deleteBrain(id, axiosInstance),
     getBrains: async () => getBrains(axiosInstance),
     getBrain: async (id: string) => getBrain(id, axiosInstance),
-    addBrainSubscriptions: async (
-      brainId: string,
-      subscriptions: Subscription[]
-    ) => addBrainSubscriptions(brainId, subscriptions, axiosInstance),
-    getBrainUsers: async (brainId: string) =>
-      getBrainUsers(brainId, axiosInstance),
-    updateBrainAccess: async (
-      brainId: string,
-      userEmail: string,
-      subscription: SubscriptionUpdatableProperties
-    ) => updateBrainAccess(brainId, userEmail, subscription, axiosInstance),
     updateBrain: async (brainId: string, brain: UpdateBrainInput) =>
       updateBrain(brainId, brain, axiosInstance),
     getPublicBrains: async () => getPublicBrains(axiosInstance),
