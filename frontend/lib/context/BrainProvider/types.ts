@@ -6,8 +6,10 @@ import { Document } from "@/lib/types/Document";
 import { useBrainProvider } from "./hooks/useBrainProvider";
 
 import { BrainType, Model } from "../../types/BrainConfig";
+export const roles = ["Viewer", "Editor", "Owner"] as const;
 
 export type BrainAccessStatus = "private" | "public";
+export type BrainRoleType = (typeof roles)[number];
 
 export type IntegrationDescription = {
   connection_settings?: object;
