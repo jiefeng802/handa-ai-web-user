@@ -1,0 +1,11 @@
+{
+  "deleteButton": "删除知识库",
+  "deleteConfirmQuestion": "您确定要删除这个知识库吗？此操作无法撤销！",
+  "deleteConfirmYes": "是的，我要删除",
+  "returnButton": "返回",
+  "unsubscribeButton": "取消订阅知识库",
+  "unsubscribeConfirmQuestion": "您确定要取消订阅此知识库吗？",
+  "unsubscribeConfirmYes": "是的，取消订阅此知识库",
+  "successfully_deleted": "知识库已成功删除。",
+  "successfully_unsubscribed": "您已成功取消订阅此知识库。"
+}

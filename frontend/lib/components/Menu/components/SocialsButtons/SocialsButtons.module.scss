@@ -1,0 +1,15 @@
+@use "styles/Spacings.module.scss";
+
+.socials_buttons_wrapper {
+  display: flex;
+  gap: Spacings.$spacing05;
+  justify-content: space-between;
+  padding-inline: Spacings.$spacing06;
+
+  .left {
+    display: flex;
+    gap: Spacings.$spacing05;
+    justify-content: center;
+    align-items: center;
+  }
+}

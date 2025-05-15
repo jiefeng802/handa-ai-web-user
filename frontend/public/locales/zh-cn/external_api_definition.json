@@ -1,0 +1,14 @@
+{
+  "method_label": "方法",
+  "url_placeholder": "URL",
+  "searchParams": "搜索内容",
+  "headers": "Headers",
+  "params": "参数",
+  "key": "Key",
+  "type": "Type (string or number)",
+  "description": "描述",
+  "secrets": "秘密",
+  "paramsTabDescription": "这些值作为请求体发送。",
+  "searchParamsTabDescription": "这些值作为查询字符串发送。",
+  "secretsTabDescription": "这些值作为头部键发送。"
+}
