@@ -38,18 +38,16 @@ export const ChatDialogue = ({
 
   return (
     <div className={chatDialogueContainerClassName} ref={chatListRef}>
-
-        <div className={chatItemContainerClassName}>
-          {chatItems.map((chatItem, index) => (
-            <ChatItem
-              key={getKeyFromChatItem(chatItem)}
-              content={chatItem}
-              index={index}
-              lastMessage={index === chatItems.length - 1}
-            />
-          ))}
-        </div>
-      )
+      <div className={chatItemContainerClassName}>
+        {chatItems.map((chatItem, index) => (
+          <ChatItem
+            key={getKeyFromChatItem(chatItem)}
+            content={chatItem}
+            index={index}
+            lastMessage={index === chatItems.length - 1}
+          />
+        ))}
+      </div>
     </div>
   );
 };
