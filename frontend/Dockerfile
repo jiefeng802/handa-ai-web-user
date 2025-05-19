@@ -72,9 +72,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
-EXPOSE 3005
+EXPOSE 8089
 
-ENV PORT 3005
+ENV PORT 8089
 # set hostname to localhost
 ENV HOSTNAME "0.0.0.0"
 
