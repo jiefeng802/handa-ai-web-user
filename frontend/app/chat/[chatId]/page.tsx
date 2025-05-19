@@ -29,12 +29,10 @@ const SelectedChatPage = (): JSX.Element => {
     try {
       const chatItems = await getChatItems(chatId);
       const chatMessages = getMessagesFromChatItems(chatItems);
-      setMessages((prevMessages: ChatMessage[]) => {
-        const ongoingMessages = prevMessages.filter((msg: ChatMessage) => 
-          msg.assistant.endsWith('🧠')
-        );
-        return [...chatMessages, ...ongoingMessages];
-      });
+      const ongoingMessages = messages.filter((msg: ChatMessage) => 
+        msg.assistant.endsWith('🧠')
+      );
+      setMessages([...chatMessages, ...ongoingMessages]);
     } catch (error) {
       console.error('Error fetching chat history:', error);
     }
