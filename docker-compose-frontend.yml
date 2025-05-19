@@ -15,10 +15,6 @@ services:
     restart: always
     ports:
       - 3005:3005
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-      - /app/.next
 
 networks:
   quivr-network:
