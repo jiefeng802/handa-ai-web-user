@@ -6,6 +6,7 @@ import {
   ChatMessage,
   ChatQuestion,
 } from "@/app/chat/[chatId]/types";
+import { useLocalChats } from "@/lib/hooks/useLocalChats";
 
 export type ChatUpdatableProperties = {
   chat_name?: string;
@@ -15,6 +16,19 @@ export type ChatMessageUpdatableProperties = {
   thumbs?: boolean | null;
 };
 
+const CHATS_STORAGE_KEY = "local_chats";
+
+export const saveChatToLocal = (chat: ChatEntity) => {
+  try {
+    const chatsStr = localStorage.getItem(CHATS_STORAGE_KEY);
+    const chats = chatsStr ? JSON.parse(chatsStr) as ChatEntity[] : [];
+    chats.unshift(chat); // 添加到列表开头
+    localStorage.setItem(CHATS_STORAGE_KEY, JSON.stringify(chats));
+  } catch (error) {
+    console.error("Error saving chat to local storage:", error);
+  }
+};
+
 export const createChat = async (
   name: string,
   axiosInstance: AxiosInstance
@@ -22,6 +36,9 @@ export const createChat = async (
   const createdChat = (
     await axiosInstance.post<ChatEntity>("/chat", { name: name })
   ).data;
+
+  // 保存到本地存储
+  saveChatToLocal(createdChat);
 
   return createdChat;
 };
