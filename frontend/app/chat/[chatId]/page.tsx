@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { useChatApi } from "@/lib/api/chat/useChatApi";
 import { useParams } from "next/navigation";
 import { getMessagesFromChatItems } from "./utils/getMessagesFromChatItems";
+import { ChatMessage } from "./types";
 
 import { ActionsBar } from "./components/ActionsBar";
 import { ChatDialogueArea } from "./components/ChatDialogueArea/ChatDialogue";
@@ -28,7 +29,12 @@ const SelectedChatPage = (): JSX.Element => {
     try {
       const chatItems = await getChatItems(chatId);
       const chatMessages = getMessagesFromChatItems(chatItems);
-      setMessages(chatMessages);
+      setMessages((prevMessages: ChatMessage[]) => {
+        const ongoingMessages = prevMessages.filter((msg: ChatMessage) => 
+          msg.assistant.endsWith('🧠')
+        );
+        return [...chatMessages, ...ongoingMessages];
+      });
     } catch (error) {
       console.error('Error fetching chat history:', error);
     }
