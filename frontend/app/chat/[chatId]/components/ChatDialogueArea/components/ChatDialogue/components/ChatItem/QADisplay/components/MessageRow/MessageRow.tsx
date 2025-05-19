@@ -52,7 +52,6 @@ export const MessageRow = ({
   );
   const [folded, setFolded] = useState<boolean>(false);
   const [sourceFiles, setSourceFiles] = useState<SourceFile[]>([]);
-  const [isThinking, setIsThinking] = useState<boolean>(false);
   const { submitQuestion } = useChatInput();
 
   useEffect(() => {
@@ -77,14 +76,6 @@ export const MessageRow = ({
       }, [] as SourceFile[]) ?? []
     );
   }, [initialThumbs, metadata]);
-
-  useEffect(() => {
-    if (!isUserSpeaker && text === "🧠") {
-      setIsThinking(true);
-    } else if (!isUserSpeaker && text && text !== "🧠" && isThinking) {
-      setIsThinking(false);
-    }
-  }, [text, isUserSpeaker]);
 
   const messageContent = text ?? "";
 
@@ -119,7 +110,7 @@ export const MessageRow = ({
   };
 
   const renderMetadata = () => {
-    if (!isUserSpeaker && !isThinking) {
+    if (!isUserSpeaker && messageContent !== "🧠") {
       return (
         <div className={styles.metadata_wrapper}>
           <div
@@ -215,7 +206,7 @@ export const MessageRow = ({
       ${lastMessage ? styles.last : ""}
       `}
     >
-      {!isUserSpeaker && !isThinking && (
+      {!isUserSpeaker && messageContent !== "🧠" && (
         <div onClick={() => setFolded(!folded)}>
           <Icon
             name="chevronDown"
@@ -233,7 +224,7 @@ export const MessageRow = ({
         {children ?? (
           <>
             <MessageContent
-              text={isThinking ? "🧠" : messageContent}
+              text={messageContent}
               isUser={isUserSpeaker}
               hide={folded}
             />
