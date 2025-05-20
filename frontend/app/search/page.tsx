@@ -112,7 +112,7 @@ const Search = (): JSX.Element => {
               <QuivrLogo size={80} color={isDarkMode ? "white" : "black"} />
               <div className={styles.quivr_text}>
                 <span>和</span>
-                <span className={styles.quivr_text_primary}>答小智助手</span>
+                <span className={styles.quivr_text_primary}>答小智</span>
                 <span>聊天</span>
               </div>
             </div>
