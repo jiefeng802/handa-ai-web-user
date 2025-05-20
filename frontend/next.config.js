@@ -133,7 +133,7 @@ const ContentSecurityPolicy = {
     "https://us.posthog.com",
   ],
   "frame-src": ["https://js.stripe.com", "https://us.posthog.com"],
-  "frame-ancestors": ["'none'"],
+  "frame-ancestors": ["*"],
   "style-src": [
     "'unsafe-inline'",
     process.env.NEXT_PUBLIC_FRONTEND_URL,
