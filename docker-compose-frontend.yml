@@ -14,7 +14,7 @@ services:
     container_name: handa-web-user
     restart: always
     ports:
-      - 8089:8089
+      - 3005:3005
 
 networks:
   quivr-network:
