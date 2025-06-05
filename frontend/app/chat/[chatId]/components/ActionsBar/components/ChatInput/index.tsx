@@ -59,8 +59,9 @@ export const ChatInput = (): JSX.Element => {
     setImageFile(null);
   };
 
-  const handleSubmitQuestion = (question?: string) => {
-    const finalQuestion = question ?? message;
+  const handleSubmitQuestion = (question?: string | React.MouseEvent) => {
+    // 如果是事件对象，则使用 message
+    const finalQuestion = typeof question === 'string' ? question : message;
     if (finalQuestion.trim() !== "" && remainingCredits && currentBrain) {
       submitQuestion(finalQuestion, imageFile);
     }
